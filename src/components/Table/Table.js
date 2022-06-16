@@ -6,7 +6,8 @@ import './Table.css';
 const Tables = ({ 
    users,
    handleEditClick,
-   handleRemoveClick
+   handleRemoveClick,
+   data
  }) => {
    return (
       <Table striped bordered hover variant="dark">
@@ -26,6 +27,7 @@ const Tables = ({
                   <td>{user.userName}</td>
                   <td>{user.userSurname}</td>
                   <td>{user.userSalary}</td>
+                  <td>{data.data}</td>
                   <td>
                      <div>
                         <Btn

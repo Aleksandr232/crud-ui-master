@@ -17,6 +17,24 @@ function App() {
     isEdit: false,
     userIndex: null
   });
+  const [data, setData] = useState({});
+
+  const clickData=()=>{
+    return fetch(`http://178.128.196.163:3000/crud/get api`,{
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    })
+    .then(res => res.json())
+    .then(result => {
+      setData(result)
+      console.log(result);
+      
+    });
+  }
+    
+  
 
   const handleRemoveClick = ({ index }) => {
     setUsers(users.filter((user, userIndex) => userIndex !== index));
@@ -72,6 +90,7 @@ function App() {
       <div className="wrapper-content">
         <div className="table-data">
           <Tables
+            data={data}
             users={users}
             handleEditClick={handleEditClick}
             handleRemoveClick={handleRemoveClick}
@@ -117,6 +136,12 @@ function App() {
                 data={null}
                 type="submit"
                 disabled={!isFilledFields}
+              />
+              <Btn
+              label='получить'
+              classNames=""
+              handleClick={clickData}
+              data={data}
               />
             </div>
           </form>
