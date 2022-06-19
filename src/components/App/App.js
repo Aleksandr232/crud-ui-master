@@ -27,7 +27,7 @@ function App() {
   const [datas, setData] = useState({});
 
   const clickData=()=>{ 
-    axios.get('http://178.128.196.163:3000/api/records/', { records: 'example' })
+    fetch('http://178.128.196.163:3000/crud/GET/api/records')
     /* .then(res => res.json()) */
     .then(result => {
       console.log(result);
