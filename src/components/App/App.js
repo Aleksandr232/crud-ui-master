@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Btn from '../Button/Button';
 import Input from '../Input/Input';
 import Tables from '../Table/Table';
@@ -10,25 +11,25 @@ const initialValues = {
   userSalary: ''
 }
 
+/* const api = {
+  key: "af3904bcfb9954b533100c6413793863",
+  base: "https://api.openweathermap.org/data/2.5/"
+} */
+
 function App() {
+  
   const [userData, setUserData] = useState(initialValues);
   const [users, setUsers] = useState([]);
   const [editableUserData, setEditableUserData] = useState({
     isEdit: false,
     userIndex: null
   });
-  const [data, setData] = useState({});
+  const [datas, setData] = useState({});
 
-  const clickData=()=>{
-    return fetch(`http://178.128.196.163:3000/crud/get api`,{
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
-    })
-    .then(res => res.json())
+  const clickData=()=>{ 
+    axios.get('http://178.128.196.163:3000/api/records/', { records: 'example' })
+    /* .then(res => res.json()) */
     .then(result => {
-      setData(result)
       console.log(result);
       
     });
@@ -90,7 +91,7 @@ function App() {
       <div className="wrapper-content">
         <div className="table-data">
           <Tables
-            data={data}
+            datas={datas}
             users={users}
             handleEditClick={handleEditClick}
             handleRemoveClick={handleRemoveClick}
@@ -141,7 +142,7 @@ function App() {
               label='получить'
               classNames=""
               handleClick={clickData}
-              data={data}
+               /* data={datas}  */
               />
             </div>
           </form>

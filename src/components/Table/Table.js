@@ -7,7 +7,12 @@ const Tables = ({
    users,
    handleEditClick,
    handleRemoveClick,
-   data
+   datas,
+   clickData,
+   records
+   
+   
+
  }) => {
    return (
       <Table striped bordered hover variant="dark">
@@ -27,7 +32,7 @@ const Tables = ({
                   <td>{user.userName}</td>
                   <td>{user.userSurname}</td>
                   <td>{user.userSalary}</td>
-                  <td>{data.data}</td>
+                  <td>{records?.data}</td>
                   <td>
                      <div>
                         <Btn
