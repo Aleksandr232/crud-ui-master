@@ -27,8 +27,9 @@ function App() {
   const [datas, setData] = useState({});
 
   const clickData=()=>{ 
-    fetch('http://178.128.196.163:3000/crud/GET/api/records')
-    /* .then(res => res.json()) */
+    fetch(`http://localhost:3000/GET/api/records`)
+
+    /*  .then(response => response.json()) */
     .then(result => {
       console.log(result);
       
